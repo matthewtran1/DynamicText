@@ -2,8 +2,8 @@
 const customPanel = () => {
   
     return (
-      <h1 className="text-3xl font-bold underline">
-        Dynamic Text Animation Generator
+      <h1 className="text-3xl font-bold ">
+        CustomPanel
       </h1>
     )
   }

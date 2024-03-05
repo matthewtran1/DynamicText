@@ -1,13 +1,13 @@
 
 
 
-const exportText = () => {
+const ExportText = () => {
   
     return (
-      <h1 className="text-3xl font-bold underline">
-        Dynamic Text Animation Generator
+      <h1 className="text-3xl font-bold">
+        Export Text
       </h1>
     )
   }
   
-  export default exportText
+  export default ExportText

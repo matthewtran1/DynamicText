@@ -1,16 +1,16 @@
-import inputText from "./inputText";
-import exportText from "./exportText";
-import createText from "./createText";
-import customPanel from "./customPanel";
-import drawTextBox from "./drawTextBox";
+import InputText from "./InputText";
+import ExportText from "./ExportText";
+import CreateText from "./CreateText";
+import CustomPanel from "./CustomPanel";
+import DrawTextBox from "./DrawTextBox";
 
 export {
 
-    inputText,
-    exportText,
-    createText,
-    customPanel,
-    drawTextBox
+    InputText,
+    ExportText,
+    CreateText,
+    CustomPanel,
+    DrawTextBox
 
 
 };
