@@ -1,7 +1,7 @@
 
 
 
-const exportText = () => {
+const drawTextBox = () => {
   
     return (
       <h1 className="text-3xl font-bold underline">
@@ -10,4 +10,4 @@ const exportText = () => {
     )
   }
   
-  export default exportText
+  export default drawTextBox
