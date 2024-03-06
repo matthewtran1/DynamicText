@@ -1,12 +1,15 @@
 
 
+//Create input text box
 
 const inputText = () => {
   
     return (
-      <h1 className="text-3xl font-bold ">
-        InputText
-      </h1>
+      <div>
+        <label>
+          Text input: <input type="text" placeholder="Enter Text"/>
+        </label>
+      </div>
     )
   }
   

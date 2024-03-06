@@ -1,12 +1,31 @@
 
+//Create Export button
+//Export only if:
+//React state: off if animation is not drawn
+//              on if animation is drawn
+//Create share to social media platforms (either on this section or its own section)
 
 
 const ExportText = () => {
   
     return (
-      <h1 className="text-3xl font-bold">
-        Export Text
-      </h1>
+      <div>
+
+        <button className="
+        text-white 
+        bg-blue-500 
+        hover:bg-blue-600 
+        
+        font-medium rounded-lg 
+        text-md px-5 py-2.5 me-2 my-2"
+        >
+
+          Export Text
+
+        </button>
+
+
+      </div>
     )
   }
   

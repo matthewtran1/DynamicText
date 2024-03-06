@@ -1,4 +1,6 @@
 
+//Create panel that allows me customization
+
 const customPanel = () => {
   
     return (
