@@ -7,7 +7,7 @@ const inputText = () => {
     return (
       <div>
         <label>
-          Text input: <input type="text" placeholder="Enter Text"/>
+          <input type="text" placeholder="Enter Text" className="bg-blue-100 font-medium rounded-lg text-center"/>
         </label>
       </div>
     )
