@@ -1,12 +1,16 @@
 
 //Create rounded box that the text is animated in
 
+//Box is responsive using rem or %
+
 const drawTextBox = () => {
   
     return (
-      <h1 className="text-3xl font-bold">
-        DrawTextBox
-      </h1>
+      <div className="w-4/5 h-96 rounded-lg border-2 border-slate-300">
+
+
+
+      </div>
     )
   }
   

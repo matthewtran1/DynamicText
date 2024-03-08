@@ -1,12 +1,37 @@
 
 //Create panel that allows me customization
+//Color
+//Font
+//Animation Styles
 
 const customPanel = () => {
   
     return (
-      <h1 className="text-3xl font-bold ">
-        CustomPanel
-      </h1>
+
+      <>
+
+        {/* Color */}
+        <div className="">
+
+
+
+        </div>
+
+        {/* Font*/}
+        <div className="">
+
+
+
+        </div>
+
+        {/* Animation Style */}
+        <div className="">
+
+
+
+        </div>
+
+      </>
     )
   }
   
