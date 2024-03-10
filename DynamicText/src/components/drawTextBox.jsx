@@ -6,7 +6,7 @@
 const drawTextBox = () => {
   
     return (
-      <div className="w-4/5 h-96 rounded-lg border-2 border-slate-300">
+      <div className="w-full h-96 rounded-lg border-2 border-slate-300">
 
 
 
