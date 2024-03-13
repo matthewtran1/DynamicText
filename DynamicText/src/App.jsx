@@ -19,21 +19,28 @@ const App = () => {
 
         
         
-        <div className='flex justify-center'>
-          <DrawTextBox />
-        </div>
+        
+        <DrawTextBox />
+        
 
-        <div className='flex my-2'>
+        <div className='grid grid-cols-2 my-2'>
 
-          <InputText/>
+          <div className='flex justify-start '>
+            <InputText/>
+          </div>
 
-          <CreateText/>
+          <div className='flex justify-end'>
+            <CreateText/>
+          </div>
 
-          <ExportText/>
+          
+          
           
         </div>
         
-
+        <div className='flex justify-end'>
+            <ExportText/>
+          </div>
         
         <CustomPanel/>
         

@@ -3,22 +3,26 @@
 //button: Animate
 
 
+
 const createText = () => {
-  
+
+    function animateText() {
+
+      let inputTextElement = document.getElementById("inputText").value;
+      console.log(inputTextElement);
+    
+      document.getElementById("animateText").innerText = inputTextElement;
+    
+    }
+   
+
     return (
       
       <div>
 
-        <button className="
-        text-white 
-        bg-blue-500 
-        hover:bg-blue-600 
+        <button onClick={animateText} className="text-white bg-indigo-500 hover:bg-indigo-600  font-medium rounded-lg text-md px-3 py-1.5">
 
-        font-medium rounded-lg 
-        text-md px-3 py-1.5"
-        >
-
-          Create Text
+          Animate Text
 
         </button>
 

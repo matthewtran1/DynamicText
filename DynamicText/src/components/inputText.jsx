@@ -6,9 +6,9 @@ const inputText = () => {
   
     return (
       <>
-        <label>
-          <input type="text" placeholder="Enter Text" className="bg-blue-100 font-medium rounded-lg text-center py-1.5 w-64"/>
-        </label>
+    
+        <input id="inputText" type="text" placeholder="Enter Text" className=" border-2 border-indigo-500 placeholder:font-medium rounded-lg text-center py-1.5 w-full"/>
+        
       </>
     )
   }

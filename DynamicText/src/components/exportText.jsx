@@ -13,14 +13,14 @@ const ExportText = () => {
 
         <button className="
         text-white 
-        bg-blue-500 
-        hover:bg-blue-600 
+        bg-indigo-500
+        hover:bg-indigo-600 
         
         font-medium rounded-lg 
         text-md px-3 py-1.5 "
         >
 
-          Export Text
+          Export 
 
         </button>
 

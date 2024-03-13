@@ -6,9 +6,9 @@
 const drawTextBox = () => {
   
     return (
-      <div className="w-full h-96 rounded-lg border-2 border-slate-200">
+      <div className="w-full h-96 rounded-lg border-2 border-slate-500 place-items-center">
 
-
+        <p id="animateText"></p>
 
       </div>
     )
