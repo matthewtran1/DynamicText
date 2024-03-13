@@ -17,7 +17,14 @@ const customPanel = () => {
 
         </div>
 
-        {/* Font*/}
+        {/* Font Style*/}
+        <div className="">
+
+
+
+        </div>
+
+        {/* Font Size*/}
         <div className="">
 
 
