@@ -16,9 +16,6 @@ const App = () => {
       </h1>
 
       <div className="pt-[2.75rem] lg:pt-[3.25rem] overflow-hidden">
-
-        
-        
         
         <DrawTextBox />
         
