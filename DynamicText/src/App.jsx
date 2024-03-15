@@ -34,13 +34,17 @@ const App = () => {
           
           
         </div>
-        
-        <div className='flex justify-end'>
+        <div className='grid grid-cols-2 my-2'>
+          <div className='flex justify-start '>
+            <CustomPanel/>
+          </div>
+
+          <div className='flex justify-end'>
             <ExportText/>
           </div>
         
-        <CustomPanel/>
         
+        </div>
       </div>
 
     </>
