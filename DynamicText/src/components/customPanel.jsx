@@ -34,13 +34,13 @@ const customPanel = () => {
 
           {/* Font Size*/}
           
-          <select value={value} onChange={handleChange} className="text-center">
+          <select value={value} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mr-2">
               <option value={"font-size"}>Font-Size</option>
               <option value={"text-xs"}>12px</option>
               <option value={"text-sm"}>14px</option>
               <option value={"text-base"}>16px</option>
               <option value={"text-lg"}>18px</option>
-              <option value={"text-xl"}>20x</option>
+              <option value={"text-xl"}>20px</option>
               <option value={"text-2xl"}>24px</option>
               <option value={"text-3xl"}>30px</option>
               <option value={"text-4xl"}>36px</option>
@@ -54,7 +54,7 @@ const customPanel = () => {
             
 
           {/* Font Style*/}
-          <select value={fontstyleValue} onChange={handleChange} className="text-center">
+          <select value={fontstyleValue} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
               <option value={"font-style"}>Font-Style</option>
               <option value={"font-sans"}>Font-sans</option>
               <option value={"font-serif"}>Font-serif</option>
@@ -64,7 +64,7 @@ const customPanel = () => {
           
           {/* Color */}
      
-          <select value={colorValue} onChange={handleChange} className="text-center">
+          <select value={colorValue} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
               <option value={"color"}>Color</option>
               <option value={"text-red"}>Red</option>
               <option value={"text-orange"}>Orange</option>
@@ -80,7 +80,7 @@ const customPanel = () => {
             </select>
 
         {/* Animation Style */}
-          <select value={animationValue} onChange={handleChange} className="text-center">
+          <select value={animationValue} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
               <option value={"animationStyle"}>Animation Style</option>
               
           </select>

@@ -6,7 +6,7 @@
 const drawTextBox = () => {
   
     return (
-      <div className=" flex items-center justify-center w-full h-96 rounded-lg border-2 border-slate-500">
+      <div className=" flex items-center justify-center w-full h-96 rounded-lg border-2 border-indigo-500">
 
         <p id="animateText"></p>
 
