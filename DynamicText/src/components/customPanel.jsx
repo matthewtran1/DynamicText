@@ -7,22 +7,22 @@ import { useState } from "react";
 
 const customPanel = () => {
 
-    const [value, setValue] = useState("font-size");
-      function handleChange(e) {
-          setValue(e.target.value);
-    }
 
-    const [fontstyleValue, setfontstyleValue] = useState("font-style");
-    function handleChange(e) {
-        setfontstyleValue(e.target.value);
-    }
-    const [colorValue, setcolorValue] = useState("color");
-    function handleChange(e) {
-        setcolorValue(e.target.value);
-    }
-    const [animationValue, setanimationValue] = useState("animation");
-    function handleChange(e) {
-        setanimationValue(e.target.value);
+    const initialValues = {
+
+      fontsize: "",
+      fontStyle: "",
+      color: "",
+      animationStyle: ""
+
+    };
+
+    const [values, setValue] = useState(initialValues);
+
+      function handleChange(e) {
+        const {name, value} = e.target;
+          setValue({...values,
+          [name]: value});
     }
 
     return (
@@ -34,8 +34,12 @@ const customPanel = () => {
 
           {/* Font Size*/}
           
-          <select value={value} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mr-2">
-              <option value={"font-size"}>Font-Size</option>
+          <select value={values.fontsize} 
+            onChange={handleChange} 
+            name="fontsize"
+            className="text-center border-2 border-indigo-500 font-medium rounded-lg mr-2">
+
+              <option defaultValue={"font-size"}>Font-Size</option>
               <option value={"text-xs"}>12px</option>
               <option value={"text-sm"}>14px</option>
               <option value={"text-base"}>16px</option>
@@ -54,8 +58,12 @@ const customPanel = () => {
             
 
           {/* Font Style*/}
-          <select value={fontstyleValue} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
-              <option value={"font-style"}>Font-Style</option>
+          
+          <select value={values.fontStyle} 
+            onChange={handleChange} 
+            name="fontStyle"
+            className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
+              <option defaultValue={"font-style"}>Font-Style</option>
               <option value={"font-sans"}>Font-sans</option>
               <option value={"font-serif"}>Font-serif</option>
               <option value={"font-mono"}>Font-mono</option>
@@ -64,8 +72,11 @@ const customPanel = () => {
           
           {/* Color */}
      
-          <select value={colorValue} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
-              <option value={"color"}>Color</option>
+          <select value={values.color} 
+          onChange={handleChange} 
+          name="color"
+          className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
+              <option defaultValue={"color"}>Color</option>
               <option value={"text-red"}>Red</option>
               <option value={"text-orange"}>Orange</option>
               <option value={"text-yellow"}>Yellow</option>
@@ -80,9 +91,13 @@ const customPanel = () => {
             </select>
 
         {/* Animation Style */}
-          <select value={animationValue} onChange={handleChange} className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
-              <option value={"animationStyle"}>Animation Style</option>
-              
+     
+          <select value={values.animationStyle} 
+          onChange={handleChange} 
+          name="animationStyle"
+          className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
+              <option defaultValue={"animationStyle"}>Animation Style</option>
+              <option value={"text-red"}>Retro</option>
           </select>
 
 
