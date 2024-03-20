@@ -11,11 +11,11 @@ const App = () => {
   
   return (
     <>
-      <h1 className="text-3xl font-bold ">
+      <h1 className="text-3xl font-bold text-indigo-500 ">
         Dynamic Text Animation Generator
       </h1>
 
-      <div className="pt-[2.75rem] lg:pt-[3.25rem] overflow-hidden">
+      <div className="pt-[1.75rem] lg:pt-[3.25rem] overflow-hidden">
         
         <DrawTextBox />
         
@@ -29,11 +29,9 @@ const App = () => {
           <div className='flex justify-end'>
             <CreateText/>
           </div>
-
-          
-          
           
         </div>
+
         <div className='grid grid-cols-2 my-2'>
           <div className='flex justify-start '>
             <CustomPanel/>
