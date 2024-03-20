@@ -8,7 +8,7 @@ const drawTextBox = () => {
     return (
       <div className=" flex items-center justify-center w-full h-96 rounded-lg border-2 border-indigo-500">
 
-        <p id="animateText"></p>
+        <p id="animateText" className="font-medium"></p>
 
       </div>
     )

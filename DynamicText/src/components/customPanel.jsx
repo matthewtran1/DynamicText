@@ -23,7 +23,7 @@ const customPanel = () => {
         const {name, value} = e.target;
           setValue({...values,
           [name]: value});
-    }
+      }
 
     return (
 
