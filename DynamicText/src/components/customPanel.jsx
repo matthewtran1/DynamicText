@@ -3,6 +3,9 @@
 //Color
 //Font
 //Animation Styles
+
+//TODO: Responsive Design for customization panel
+
 import { useState } from "react";
 
 const customPanel = () => {
