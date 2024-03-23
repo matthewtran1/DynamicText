@@ -94,7 +94,7 @@ const customPanel = () => {
             </select>
 
         {/* Animation Style */}
-     
+      {/* Styles will be from library */}
           <select value={values.animationStyle} 
           onChange={handleChange} 
           name="animationStyle"
