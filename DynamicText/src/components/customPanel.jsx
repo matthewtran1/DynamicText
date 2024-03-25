@@ -7,10 +7,13 @@
 //TODO: Responsive Design for customization panel
 
 import { useState } from "react";
+import { useEffect } from "react";
+import anime from 'animejs/lib/anime.es.js';
+
 
 const customPanel = () => {
 
-
+    /* Set initial values of customization panels */
     const initialValues = {
 
       fontsize: "",
@@ -20,13 +23,26 @@ const customPanel = () => {
 
     };
 
+    /* Handles input changes to the customization panel  */
     const [values, setValue] = useState(initialValues);
 
-      function handleChange(e) {
-        const {name, value} = e.target;
-          setValue({...values,
-          [name]: value});
-      }
+    function handleChange(e) {
+      const {name, value} = e.target;
+        setValue({...values,
+        [name]: value});
+    }
+
+    const FadingText = () => {
+      useEffect(() => {
+        anime({
+          targets: '.text',
+          opacity: 1,
+          duration: 2000,
+          easing: 'easeInOutQuad'
+        });
+      }, []);
+    };
+    
 
     return (
 
@@ -100,7 +116,7 @@ const customPanel = () => {
           name="animationStyle"
           className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
               <option defaultValue={"animationStyle"}>Animation Style</option>
-              <option value={"text-red"}>Retro</option>
+              <option value={FadingText}>Fading Text</option>
           </select>
 
 
