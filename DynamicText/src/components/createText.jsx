@@ -4,13 +4,17 @@
 
 
 
-const createText = () => {
-  
+const createText = ({value}) => {
+    console.log(value);
+    
     const animateText = () => {
 
-      let inputTextElement = document.getElementById("inputText").value;
+      const inputTextElement = document.getElementById("inputText").value;
+  
       console.log(inputTextElement);
+      
     
+      {/* Print input text into the drawBox */}
       document.getElementById("animateText").innerText = inputTextElement;
     
     }

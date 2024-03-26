@@ -4,11 +4,12 @@
 //Font
 //Animation Styles
 
-//TODO: Responsive Design for customization panel
+
 
 import { useState } from "react";
 import { useEffect } from "react";
 import anime from 'animejs/lib/anime.es.js';
+import CreateText from "./CreateText";
 
 
 const customPanel = () => {
@@ -31,7 +32,8 @@ const customPanel = () => {
         setValue({...values,
         [name]: value});
     }
-
+    
+    /* Animation Options */
     const FadingText = () => {
       useEffect(() => {
         anime({
@@ -58,7 +60,7 @@ const customPanel = () => {
             name="fontsize"
             className="text-center border-2 border-indigo-500 font-medium rounded-lg mr-2">
 
-              <option defaultValue={"font-size"}>Font-Size</option>
+              <option defaultValue={""}>Font-Size</option>
               <option value={"text-xs"}>12px</option>
               <option value={"text-sm"}>14px</option>
               <option value={"text-base"}>16px</option>
@@ -82,10 +84,10 @@ const customPanel = () => {
             onChange={handleChange} 
             name="fontStyle"
             className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
-              <option defaultValue={"font-style"}>Font-Style</option>
-              <option value={"font-sans"}>Font-sans</option>
-              <option value={"font-serif"}>Font-serif</option>
-              <option value={"font-mono"}>Font-mono</option>
+              <option defaultValue={""}>Font-Style</option>
+              <option value={"normal"}>Normal</option>
+              <option value={"italic"}>Italic</option>
+              <option value={"bold"}>Bold</option>
             </select>
 
           
@@ -95,7 +97,7 @@ const customPanel = () => {
           onChange={handleChange} 
           name="color"
           className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
-              <option defaultValue={"color"}>Color</option>
+              <option defaultValue={""}>Color</option>
               <option value={"text-red"}>Red</option>
               <option value={"text-orange"}>Orange</option>
               <option value={"text-yellow"}>Yellow</option>
@@ -108,6 +110,7 @@ const customPanel = () => {
               <option value={"text-pink"}>Pink</option>
              
             </select>
+            
 
         {/* Animation Style */}
       
@@ -115,11 +118,18 @@ const customPanel = () => {
           onChange={handleChange} 
           name="animationStyle"
           className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
-              <option defaultValue={"animationStyle"}>Animation Style</option>
-              <option value={FadingText}>Fading Text</option>
+              <option defaultValue={""}>Animation Style</option>
+              <option value={"fading"}>Fading Text</option>
+              <option value={"typewriter"}>Typewriter</option>
           </select>
-
-
+          <div>
+            {/* Check if the option selected and if it is, call the fading text component*/}
+             
+            {values === 'fading' && <FadingText />}
+          </div>
+          
+          <CreateText value = {values} /> 
+          
         </div>
 
       </>
