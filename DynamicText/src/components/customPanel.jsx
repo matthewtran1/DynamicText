@@ -125,10 +125,10 @@ const customPanel = () => {
           <div>
             {/* Check if the option selected and if it is, call the fading text component*/}
              
-            {values === 'fading' && <FadingText />}
+            {values.animationStyle === 'fading' && <FadingText />}
           </div>
           
-          <CreateText value = {values} /> 
+          <CreateText selectedValues = {values} /> 
           
         </div>
 
