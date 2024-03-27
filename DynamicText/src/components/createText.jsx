@@ -4,29 +4,22 @@
 
 
 
-const createText = ({selectedValues}) => {
-    console.log(selectedValues);
+const CreateText = () => {
+ 
     
     
     const animateText = () => {
-      if (!selectedValues) {
-        console.error("selectedValues is undefined");
-        return;
-      }
+      
       const inputTextElement = document.getElementById("inputText").value;
-  
       console.log(inputTextElement);
       
-      const { fontsize, fontStyle, color } = selectedValues;
-
-      console.log("Font Size:", fontsize);
-      console.log("Font Style:", fontStyle);
-      console.log("Color:", color);
       {/* Print input text into the drawBox */}
       document.getElementById("animateText").innerText = inputTextElement;
     
     }
    
+    
+  
     return (
       
       <>
@@ -46,4 +39,4 @@ const createText = ({selectedValues}) => {
     )
   }
   
-  export default createText
+  export default CreateText

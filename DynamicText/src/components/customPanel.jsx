@@ -9,10 +9,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import anime from 'animejs/lib/anime.es.js';
-import CreateText from "./CreateText";
+import InputText from "./InputText";
 
 
-const customPanel = () => {
+const CustomPanel = () => {
 
     /* Set initial values of customization panels */
     const initialValues = {
@@ -25,11 +25,11 @@ const customPanel = () => {
     };
 
     /* Handles input changes to the customization panel  */
-    const [values, setValue] = useState(initialValues);
+    const [values, setValues] = useState(initialValues);
 
     function handleChange(e) {
       const {name, value} = e.target;
-        setValue({...values,
+        setValues({...values,
         [name]: value});
     }
     
@@ -51,14 +51,14 @@ const customPanel = () => {
       <>
 
         
-        <div className="flex">
+        <div className="grid grid-cols-4 gap-4 ">
 
           {/* Font Size*/}
           
           <select value={values.fontsize} 
             onChange={handleChange} 
             name="fontsize"
-            className="text-center border-2 border-indigo-500 font-medium rounded-lg mr-2">
+            className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
 
               <option defaultValue={""}>Font-Size</option>
               <option value={"text-xs"}>12px</option>
@@ -83,7 +83,7 @@ const customPanel = () => {
           <select value={values.fontStyle} 
             onChange={handleChange} 
             name="fontStyle"
-            className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
+            className="text-center border-2 border-indigo-500 font-medium rounded-lg ">
               <option defaultValue={""}>Font-Style</option>
               <option value={"normal"}>Normal</option>
               <option value={"italic"}>Italic</option>
@@ -96,7 +96,7 @@ const customPanel = () => {
           <select value={values.color} 
           onChange={handleChange} 
           name="color"
-          className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
+          className="text-center border-2 border-indigo-500 font-medium rounded-lg ">
               <option defaultValue={""}>Color</option>
               <option value={"text-red"}>Red</option>
               <option value={"text-orange"}>Orange</option>
@@ -117,7 +117,7 @@ const customPanel = () => {
           <select value={values.animationStyle} 
           onChange={handleChange} 
           name="animationStyle"
-          className="text-center border-2 border-indigo-500 font-medium rounded-lg mx-2">
+          className="text-center border-2 border-indigo-500 font-medium rounded-lg ">
               <option defaultValue={""}>Animation Style</option>
               <option value={"fading"}>Fading Text</option>
               <option value={"typewriter"}>Typewriter</option>
@@ -128,7 +128,7 @@ const customPanel = () => {
             {values.animationStyle === 'fading' && <FadingText />}
           </div>
           
-          <CreateText selectedValues = {values} /> 
+         
           
         </div>
 
@@ -136,4 +136,4 @@ const customPanel = () => {
     )
   }
   
-  export default customPanel
+  export default CustomPanel
