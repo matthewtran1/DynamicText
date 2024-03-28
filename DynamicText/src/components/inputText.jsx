@@ -1,6 +1,5 @@
-
-
 //Create input text box
+
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 
@@ -25,5 +24,5 @@ const InputText = ({selectedValues}) => {
   InputText.propTypes = {
     selectedValues: PropTypes.object.isRequired,
   };
-  
+
   export default InputText
