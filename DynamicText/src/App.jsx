@@ -104,7 +104,9 @@ const App = () => {
                   <option defaultValue={""}>Font-Style</option>
                   <option value={"normal"}>Normal</option>
                   <option value={"italic"}>Italic</option>
-                  <option value={"bold"}>Bold</option>
+                  <option value={"font-bold"}>Bold</option>
+                  <option value={"font-serif"}>Font-serif</option>
+                  <option value={"font-mono"}>Font-mono</option>
                 </select>
 
 
@@ -115,16 +117,16 @@ const App = () => {
               name="color"
               className="text-center border-2 border-indigo-500 font-medium rounded-lg ">
                   <option defaultValue={""}>Color</option>
-                  <option value={"text-red"}>Red</option>
-                  <option value={"text-orange"}>Orange</option>
-                  <option value={"text-yellow"}>Yellow</option>
-                  <option value={"text-green"}>Green</option>
-                  <option value={"text-cyan"}>Cyan</option>
-                  <option value={"text-blue"}>Blue</option>
-                  <option value={"text-indigo"}>Indigo</option>
-                  <option value={"text-violet"}>Violet</option>
-                  <option value={"text-purple"}>Purple</option>
-                  <option value={"text-pink"}>Pink</option>
+                  <option value={"text-red-500"}>Red</option>
+                  <option value={"text-orange-500"}>Orange</option>
+                  <option value={"text-yellow-500"}>Yellow</option>
+                  <option value={"text-green-500"}>Green</option>
+                  <option value={"text-cyan-500"}>Cyan</option>
+                  <option value={"text-blue-500"}>Blue</option>
+                  <option value={"text-indigo-500"}>Indigo</option>
+                  <option value={"text-violet-500"}>Violet</option>
+                  <option value={"text-purple-500"}>Purple</option>
+                  <option value={"text-pink-500"}>Pink</option>
                 
                 </select>
                 
