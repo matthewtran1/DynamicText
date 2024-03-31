@@ -132,8 +132,12 @@ const App = () => {
               name="animationStyle"
               className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Animation Style</option>
-                  <option value={"fading"}>Fading Text</option>
-                  <option value={"typewriter"}>Typewriter</option>
+                  <option value={"fadein"}>Fade In</option>
+                  <option value={"fadeup"}>Fade Up</option>
+                  <option value={"fadedown"}>Fade Down</option>
+                  <option value={"fadeleft"}>Fade Left</option>
+                  <option value={"faderight"}>Fade Right</option>
+          
               </select>
               
               

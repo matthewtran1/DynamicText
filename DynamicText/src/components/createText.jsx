@@ -28,8 +28,8 @@ const CreateText = ({ selectedValues }) => {
     
       document.getElementById("animateText").className = classes.trim();
 
-      // Fade Animation
-      if (selectedValues.animationStyle === "fading") {
+      // Fade in Animation
+      if (selectedValues.animationStyle === "fadein") {
         setIsAnimating(true);
         anime({
             targets: '#animateText',
@@ -40,13 +40,52 @@ const CreateText = ({ selectedValues }) => {
         });
       }
 
-      // Typewriter animation
-      if (selectedValues.animationStyle === "typewriter") {
+      // Fade up animation
+      if (selectedValues.animationStyle === "fadeup") {
         setIsAnimating(true);
         anime({
             targets: '#animateText',
             opacity: [0, 1],
             translateY: ['100%', '0%'],
+            easing: 'easeInOutQuad',
+            duration: 1500, // Adjust duration as needed
+            complete: () => setIsAnimating(false)
+        });
+      }
+      
+      // Fade down animation
+      if (selectedValues.animationStyle === "fadedown") {
+        setIsAnimating(true);
+        anime({
+            targets: '#animateText',
+            opacity: [0, 1],
+            translateY: ['-100%', '0%'],
+            easing: 'easeInOutQuad',
+            duration: 1500, // Adjust duration as needed
+            complete: () => setIsAnimating(false)
+        });
+      }
+      
+      // Fade left animation
+      if (selectedValues.animationStyle === "fadeleft") {
+        setIsAnimating(true);
+        anime({
+            targets: '#animateText',
+            opacity: [0, 1],
+            translateX: ['100%', '0%'],
+            easing: 'easeInOutQuad',
+            duration: 1500, // Adjust duration as needed
+            complete: () => setIsAnimating(false)
+        });
+      }
+
+      // Fade right animation
+      if (selectedValues.animationStyle === "faderight") {
+        setIsAnimating(true);
+        anime({
+            targets: '#animateText',
+            opacity: [0, 1],
+            translateX: ['-100%', '0%'],
             easing: 'easeInOutQuad',
             duration: 1500, // Adjust duration as needed
             complete: () => setIsAnimating(false)
