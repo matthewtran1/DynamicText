@@ -1,9 +1,8 @@
 
 import './App.css';
-import { CreateText, ExportText, InputText, CustomPanel, DrawTextBox } from './components';
+import { CreateText, ExportText, InputText, DrawTextBox } from './components';
 import { useState } from "react";
-import { useEffect } from "react";
-import anime from 'animejs/lib/anime.es.js';
+
 //Increase length of text box
 // Make left side of text box line up with left size of textbox
 // Move create text button using margins
@@ -30,17 +29,7 @@ const App = () => {
         [name]: value});
     }
     
-    /* Animation Options */
-    const FadingText = () => {
-      useEffect(() => {
-        anime({
-          targets: '.text',
-          opacity: 1,
-          duration: 2000,
-          easing: 'easeInOutQuad'
-        });
-      }, []);
-    };
+    
   
 
   return (
@@ -50,10 +39,14 @@ const App = () => {
       </h1>
 
       <div className="pt-[1.75rem] lg:pt-[3.25rem] overflow-hidden">
-        
-        <DrawTextBox />
-        
 
+        {/* Render text box and pass selection values to each component*/}
+
+        <DrawTextBox text={values.text} 
+        animationStyle={values.animationStyle}  />
+        
+        {/* Render input text box and Animate Text button 
+          Pass selection values to each component*/}
         <div className='grid grid-cols-2 my-2'>
 
           <div className='flex justify-start '>
@@ -61,14 +54,15 @@ const App = () => {
           </div>
 
           <div className='flex justify-end'>
-            <CreateText/>
+            <CreateText selectedValues={values}/>
           </div>
           
         </div>
 
+        {/* Create Custom Panel*/}
         <div className='grid grid-cols-2 my-2'>
           <div className='flex justify-start '>
-            <div className="grid grid-cols-4 gap-4 ">
+            <div className="grid md:grid-cols-4 gap-4 sm:grid-cols-2">
 
               {/* Font Size*/}
 
@@ -100,7 +94,7 @@ const App = () => {
               <select value={values.fontStyle} 
                 onChange={handleChange} 
                 name="fontStyle"
-                className="text-center border-2 border-indigo-500 font-medium rounded-lg ">
+                className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Font-Style</option>
                   <option value={"normal"}>Normal</option>
                   <option value={"italic"}>Italic</option>
@@ -115,7 +109,7 @@ const App = () => {
               <select value={values.color} 
               onChange={handleChange} 
               name="color"
-              className="text-center border-2 border-indigo-500 font-medium rounded-lg ">
+              className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Color</option>
                   <option value={"text-red-500"}>Red</option>
                   <option value={"text-orange-500"}>Orange</option>
@@ -136,22 +130,20 @@ const App = () => {
               <select value={values.animationStyle} 
               onChange={handleChange} 
               name="animationStyle"
-              className="text-center border-2 border-indigo-500 font-medium rounded-lg ">
+              className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Animation Style</option>
                   <option value={"fading"}>Fading Text</option>
                   <option value={"typewriter"}>Typewriter</option>
               </select>
-              <div>
-                {/* Check if the option selected and if it is, call the fading text component*/}
-                
-                {values.animationStyle === 'fading' && <FadingText />}
-              </div>
+              
+              
 
 
 
-  </div>
+            </div>
           </div>
 
+          {/* Create Export button*/}
           <div className='flex justify-end'>
             <ExportText/>
           </div>
