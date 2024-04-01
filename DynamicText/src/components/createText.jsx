@@ -8,7 +8,7 @@ import anime from 'animejs/lib/anime.es.js';
 
 const CreateText = ({ selectedValues }) => {
 
-    const [isAnimating, setIsAnimating] = useState(false);
+    const [animatingStyle, setanimatingStyle] = useState(false);
 
     const animateText = () => {
       
@@ -24,71 +24,69 @@ const CreateText = ({ selectedValues }) => {
 
        {/* Print input text into the drawBox */}
       document.getElementById("animateText").innerText = inputTextElement;
-
-    
       document.getElementById("animateText").className = classes.trim();
 
       // Fade in Animation
       if (selectedValues.animationStyle === "fadein") {
-        setIsAnimating(true);
+        setanimatingStyle(true);                        //update state to true upon selection
         anime({
-            targets: '#animateText',
-            opacity: [0, 1],
-            duration: 2000, // Adjust duration as needed
-            easing: 'easeInOutQuad',
-            complete: () => setIsAnimating(false)
+            targets: '#animateText',                    //Specifiy the element to be animated
+            opacity: [0, 1],                            //Opacity: defines the start and end of fade
+            duration: 2000,                             //Duration of animation in milliseconds
+            easing: 'easeInOutQuad',                    //Starts slowly, speeds up in the middle and then slows down again
+            complete: () => setanimatingStyle(false)    //After completion, set to false
         });
       }
 
       // Fade up animation
       if (selectedValues.animationStyle === "fadeup") {
-        setIsAnimating(true);
+        setanimatingStyle(true);
         anime({
             targets: '#animateText',
             opacity: [0, 1],
-            translateY: ['100%', '0%'],
+            translateY: ['100%', '0%'],                 //direction of animation
             easing: 'easeInOutQuad',
-            duration: 1500, // Adjust duration as needed
-            complete: () => setIsAnimating(false)
+            duration: 1500, 
+            complete: () => setanimatingStyle(false)
         });
       }
       
       // Fade down animation
       if (selectedValues.animationStyle === "fadedown") {
-        setIsAnimating(true);
+        setanimatingStyle(true);
         anime({
             targets: '#animateText',
             opacity: [0, 1],
-            translateY: ['-100%', '0%'],
+            translateY: ['-100%', '0%'],            
             easing: 'easeInOutQuad',
-            duration: 1500, // Adjust duration as needed
-            complete: () => setIsAnimating(false)
+            duration: 1500, 
+            complete: () => setanimatingStyle(false)
         });
       }
       
       // Fade left animation
       if (selectedValues.animationStyle === "fadeleft") {
-        setIsAnimating(true);
+        setanimatingStyle(true);
         anime({
             targets: '#animateText',
             opacity: [0, 1],
             translateX: ['100%', '0%'],
             easing: 'easeInOutQuad',
-            duration: 1500, // Adjust duration as needed
-            complete: () => setIsAnimating(false)
+            duration: 1500, 
+            complete: () => setanimatingStyle(false)
         });
       }
 
       // Fade right animation
       if (selectedValues.animationStyle === "faderight") {
-        setIsAnimating(true);
+        setanimatingStyle(true);
         anime({
             targets: '#animateText',
             opacity: [0, 1],
             translateX: ['-100%', '0%'],
             easing: 'easeInOutQuad',
-            duration: 1500, // Adjust duration as needed
-            complete: () => setIsAnimating(false)
+            duration: 1500, 
+            complete: () => setanimatingStyle(false)
         });
       }
     }
@@ -106,7 +104,7 @@ const CreateText = ({ selectedValues }) => {
           Animate Text
 
         </button>
-        <p id= "animateText" className={isAnimating ? "fade-in" : ""}></p>
+        <p id= "animateText" className={animatingStyle ? "fade-in" : ""}></p>
      
       </>
       

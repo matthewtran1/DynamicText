@@ -3,11 +3,6 @@ import './App.css';
 import { CreateText, ExportText, InputText, DrawTextBox } from './components';
 import { useState } from "react";
 
-//Increase length of text box
-// Make left side of text box line up with left size of textbox
-// Move create text button using margins
-// Move export button so the end lines up with the end of the box
-
 const App = () => {
 
     /* Set initial values of customization panels */
@@ -137,6 +132,7 @@ const App = () => {
                   <option value={"fadedown"}>Fade Down</option>
                   <option value={"fadeleft"}>Fade Left</option>
                   <option value={"faderight"}>Fade Right</option>
+                  <option value={"typewriter"}>Typewriter</option>
           
               </select>
               
