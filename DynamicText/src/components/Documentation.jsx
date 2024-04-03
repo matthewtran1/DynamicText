@@ -13,7 +13,7 @@ const Documentation = () => {
 
     return (
         <div>
-        <button className="text-white bg-indigo-500 hover:bg-indigo-600  font-medium rounded-lg text-md px-3 py-1.5"
+        <button className="text-white bg-indigo-500 hover:bg-indigo-600 font-medium rounded-lg text-md px-3 py-1.5"
         onClick={togglePopup}>
             Documentation
         </button>
@@ -22,12 +22,14 @@ const Documentation = () => {
         {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-4 rounded-lg">
-            <h2 className="text-lg font-semibold mb-2">How to Use</h2>
+            <h2 className="text-lg font-bold mb-2">How to Use</h2>
             <p>Select the desired: 
+            
                 <li>Font-size</li>
                 <li>Font-style</li>
                 <li>Color</li>
                 <li>Animation Style</li>  
+           
                 Click the "Animate Text" button
                 <br></br>
                 Once animated, 

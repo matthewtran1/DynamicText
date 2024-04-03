@@ -143,7 +143,7 @@ const App = () => {
                   <option value={"rotateCCW"}>Rotate CCW</option>
                   <option value={"flip"}>Flip</option>
                   <option value={"returnR"}>Return Right</option>
-                  <option value={"returnL"}>Return Right</option>
+                  <option value={"returnL"}>Return Left</option>
   
           
               </select>

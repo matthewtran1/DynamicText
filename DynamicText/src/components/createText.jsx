@@ -3,14 +3,15 @@
 //Applies the options selected
 
 import PropTypes from 'prop-types';
-import {useState} from "react";
+import {useState, useEffect, useRef} from "react";
 import anime from 'animejs/lib/anime.es.js';
+import GIF from 'gif.js'
 
 const CreateText = ({ selectedValues }) => {
 
     const [animatingStyle, setanimatingStyle] = useState(false);
-
-
+    const gif = useRef(null);
+  
     const animateText = () => {
       
       {/* Get the value in the input text box */}
@@ -30,6 +31,18 @@ const CreateText = ({ selectedValues }) => {
       // Reset rotation to 0 degrees to be able animate text again 
       document.getElementById("animateText").style.transform = "rotate(0deg)";
 
+      //Reset animation element
+      anime.remove('#animateText');
+      
+      const frames = [];
+      const delay = 100; // Delay between frames (in milliseconds)
+  
+      // Define the animation function
+      const animateFrame = () => {
+        frames.push(document.getElementById("animateText").cloneNode(true));
+      };
+    
+
       // Fade in Animation
       if (selectedValues.animationStyle === "fadein") {
         setanimatingStyle(true);                        //update state to true upon selection
@@ -38,6 +51,7 @@ const CreateText = ({ selectedValues }) => {
             opacity: [0, 1],                            //Opacity: defines the start and end of fade
             duration: 2000,                             //Duration of animation in milliseconds
             easing: 'easeInOutQuad',                    //Starts slowly, speeds up in the middle and then slows down again
+           
             complete: () => setanimatingStyle(false)    //After completion, set to false
         });
       }
@@ -51,6 +65,7 @@ const CreateText = ({ selectedValues }) => {
             translateY: ['100%', '0%'],                 //direction of animation
             easing: 'easeInOutQuad',
             duration: 1500, 
+            
             complete: () => setanimatingStyle(false)
         });
       }
@@ -64,6 +79,7 @@ const CreateText = ({ selectedValues }) => {
             translateY: ['-100%', '0%'],            
             easing: 'easeInOutQuad',
             duration: 1500, 
+          
             complete: () => setanimatingStyle(false)
         });
       }
@@ -77,6 +93,7 @@ const CreateText = ({ selectedValues }) => {
             translateX: ['100%', '0%'],
             easing: 'easeInOutQuad',
             duration: 1500, 
+           
             complete: () => setanimatingStyle(false)
         });
       }
@@ -90,6 +107,7 @@ const CreateText = ({ selectedValues }) => {
             translateX: ['-100%', '0%'],
             easing: 'easeInOutQuad',
             duration: 1500, 
+           
             complete: () => setanimatingStyle(false)
         });
       }
@@ -103,6 +121,7 @@ const CreateText = ({ selectedValues }) => {
             rotate: '360deg',
             easing: 'linear',
             duration: 2000, 
+        
             complete: () => setanimatingStyle(false)
         });
       }
@@ -115,9 +134,11 @@ const CreateText = ({ selectedValues }) => {
             rotate: '-360deg',
             easing: 'linear',
             duration: 2000, 
+            
             complete: () => setanimatingStyle(false)
         });
       }
+
       //flip animation
       else if (selectedValues.animationStyle === "flip") {
         setanimatingStyle(true);
@@ -126,6 +147,7 @@ const CreateText = ({ selectedValues }) => {
           rotateY: [0, 360], 
           easing: 'easeInOutQuad',
           duration: 2000,
+         
           complete: () => setanimatingStyle(false)
         });
       }
@@ -139,6 +161,7 @@ const CreateText = ({ selectedValues }) => {
           translateX: [0, 100], 
           delay: 500,
           direction: 'alternate',
+       
           complete: () => setanimatingStyle(false)
         });
 
@@ -153,13 +176,40 @@ const CreateText = ({ selectedValues }) => {
           translateX: [0, -100], 
           delay: 500,
           direction: 'alternate',
+          
           complete: () => setanimatingStyle(false)
         });
 
       }
-    }
-   
+
+
+      gif.current = new GIF({
+        workers: 2,
+        quality: 10,
+        width: 400,
+        height: 200,
+      });
+      
+      frames.forEach((frame) => {
+        gif.current.addFrame(frame, { delay });
+      });
+      
+      //Open gif in new tab
+      gif.current.on('finished', function(blob) {
+        const url = URL.createObjectURL(blob);
+        window.open(url);
+      });
   
+      gif.current.render();
+    };
+    
+    //Export gif
+    const exportAsGif = () => {
+      if (gif.current !== null) {
+        gif.current.render();
+      }
+    };
+
     return (
       
       <>
@@ -167,13 +217,20 @@ const CreateText = ({ selectedValues }) => {
         <button 
         
         onClick = {animateText} 
-        className="text-white bg-indigo-500 hover:bg-indigo-600  font-medium rounded-lg text-md px-3 py-1.5">
+      
+        className="text-white bg-indigo-500 hover:bg-indigo-600 font-medium rounded-lg text-md px-3 py-1.5">
 
-          Animate Text
+          Animate
 
         </button>
-        <p id= "animateText" className={animatingStyle ? "fade-in" : ""}></p>
      
+        <button
+        onClick={exportAsGif}
+        className="text-white bg-indigo-500 hover:bg-indigo-600 font-medium rounded-lg text-md px-3 py-1.5 ml-2">
+        Export as GIF
+      </button>
+        
+       
       </>
       
     )
