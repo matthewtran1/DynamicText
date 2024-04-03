@@ -1,6 +1,6 @@
 
 import './App.css';
-import { CreateText, ExportText, InputText, DrawTextBox } from './components';
+import { CreateText, ExportText, InputText, DrawTextBox, Documentation } from './components';
 import { useState } from "react";
 
 const App = () => {
@@ -29,11 +29,17 @@ const App = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-indigo-500 ">
-        Dynamic Text Animation Generator
-      </h1>
+      
+      <div className="overflow-hidden">
 
-      <div className="pt-[1.75rem] lg:pt-[3.25rem] overflow-hidden">
+        <h1 className="text-3xl font-bold text-indigo-500 my-2">
+          Dynamic Text Animation Generator
+        </h1>
+
+        {/* Create Documentation button */}
+        <div className='flex mb-2'>
+          <Documentation/>
+        </div>
 
         {/* Render text box and pass selection values to each component*/}
 
@@ -107,6 +113,7 @@ const App = () => {
               className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Color</option>
                   <option value={"text-red-500"}>Red</option>
+                  <option value={"text-gray-500"}>Gray</option>
                   <option value={"text-orange-500"}>Orange</option>
                   <option value={"text-yellow-500"}>Yellow</option>
                   <option value={"text-green-500"}>Green</option>
@@ -132,14 +139,14 @@ const App = () => {
                   <option value={"fadedown"}>Fade Down</option>
                   <option value={"fadeleft"}>Fade Left</option>
                   <option value={"faderight"}>Fade Right</option>
-                  <option value={"typewriter"}>Typewriter</option>
+                  <option value={"rotateCW"}>Rotate CW</option>
+                  <option value={"rotateCCW"}>Rotate CCW</option>
+                  <option value={"flip"}>Flip</option>
+                  <option value={"returnR"}>Return Right</option>
+                  <option value={"returnL"}>Return Right</option>
+  
           
               </select>
-              
-              
-
-
-
             </div>
           </div>
 

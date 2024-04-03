@@ -1,11 +1,11 @@
 
+//Renders the Text Box where the input text is displayed in
+
 
 const DrawTextBox = () => {
 
-  
-
     return (
-      <div className=" flex items-center justify-center w-full h-96 rounded-lg border-2 border-indigo-500">
+      <div className=" flex items-center justify-center w-full h-96 rounded-lg border-2 border-indigo-500 overflow-hidden">
 
         <p id="animateText" className=""></p>
 
@@ -13,4 +13,5 @@ const DrawTextBox = () => {
     )
   }
 
+  
   export default DrawTextBox

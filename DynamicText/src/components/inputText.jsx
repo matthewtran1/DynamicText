@@ -1,10 +1,8 @@
-//Create input text box
 
+//Create input text box for text
 
 const InputText = () => {
 
-      
-    
     return (
       <>
     

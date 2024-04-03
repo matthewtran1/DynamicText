@@ -1,7 +1,7 @@
 import InputText from "./InputText";
 import ExportText from "./ExportText";
 import CreateText from "./CreateText";
-import CustomPanel from "./CustomPanel";
+import Documentation from "./Documentation";
 import DrawTextBox from "./DrawTextBox";
 
 export {
@@ -9,8 +9,8 @@ export {
     InputText,
     ExportText,
     CreateText,
-    CustomPanel,
-    DrawTextBox
+    DrawTextBox,
+    Documentation
 
 
 };

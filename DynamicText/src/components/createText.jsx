@@ -1,6 +1,6 @@
 
-//draw text
-//button: Animate
+//Creates the animated text and displays it into the text box
+//Applies the options selected
 
 import PropTypes from 'prop-types';
 import {useState} from "react";
@@ -9,6 +9,7 @@ import anime from 'animejs/lib/anime.es.js';
 const CreateText = ({ selectedValues }) => {
 
     const [animatingStyle, setanimatingStyle] = useState(false);
+
 
     const animateText = () => {
       
@@ -26,6 +27,9 @@ const CreateText = ({ selectedValues }) => {
       document.getElementById("animateText").innerText = inputTextElement;
       document.getElementById("animateText").className = classes.trim();
 
+      // Reset rotation to 0 degrees to be able animate text again 
+      document.getElementById("animateText").style.transform = "rotate(0deg)";
+
       // Fade in Animation
       if (selectedValues.animationStyle === "fadein") {
         setanimatingStyle(true);                        //update state to true upon selection
@@ -39,7 +43,7 @@ const CreateText = ({ selectedValues }) => {
       }
 
       // Fade up animation
-      if (selectedValues.animationStyle === "fadeup") {
+      else if (selectedValues.animationStyle === "fadeup") {
         setanimatingStyle(true);
         anime({
             targets: '#animateText',
@@ -52,7 +56,7 @@ const CreateText = ({ selectedValues }) => {
       }
       
       // Fade down animation
-      if (selectedValues.animationStyle === "fadedown") {
+      else if (selectedValues.animationStyle === "fadedown") {
         setanimatingStyle(true);
         anime({
             targets: '#animateText',
@@ -65,7 +69,7 @@ const CreateText = ({ selectedValues }) => {
       }
       
       // Fade left animation
-      if (selectedValues.animationStyle === "fadeleft") {
+      else if (selectedValues.animationStyle === "fadeleft") {
         setanimatingStyle(true);
         anime({
             targets: '#animateText',
@@ -78,7 +82,7 @@ const CreateText = ({ selectedValues }) => {
       }
 
       // Fade right animation
-      if (selectedValues.animationStyle === "faderight") {
+      else if (selectedValues.animationStyle === "faderight") {
         setanimatingStyle(true);
         anime({
             targets: '#animateText',
@@ -88,6 +92,70 @@ const CreateText = ({ selectedValues }) => {
             duration: 1500, 
             complete: () => setanimatingStyle(false)
         });
+      }
+
+
+      // Rotate cw animation
+      else if (selectedValues.animationStyle === "rotateCW") {
+        setanimatingStyle(true);
+        anime({
+            targets: '#animateText',
+            rotate: '360deg',
+            easing: 'linear',
+            duration: 2000, 
+            complete: () => setanimatingStyle(false)
+        });
+      }
+
+      // Rotate ccw animation
+      else if (selectedValues.animationStyle === "rotateCCW") {
+        setanimatingStyle(true);
+        anime({
+            targets: '#animateText',
+            rotate: '-360deg',
+            easing: 'linear',
+            duration: 2000, 
+            complete: () => setanimatingStyle(false)
+        });
+      }
+      //flip animation
+      else if (selectedValues.animationStyle === "flip") {
+        setanimatingStyle(true);
+        anime({
+          targets: '#animateText',
+          rotateY: [0, 360], 
+          easing: 'easeInOutQuad',
+          duration: 2000,
+          complete: () => setanimatingStyle(false)
+        });
+      }
+
+      //return right animation
+      else if (selectedValues.animationStyle === "returnR")
+      {
+        setanimatingStyle(true);
+        anime({
+          targets: '#animateText',
+          translateX: [0, 100], 
+          delay: 500,
+          direction: 'alternate',
+          complete: () => setanimatingStyle(false)
+        });
+
+      }
+
+      //return left animation
+      else if (selectedValues.animationStyle === "returnL")
+      {
+        setanimatingStyle(true);
+        anime({
+          targets: '#animateText',
+          translateX: [0, -100], 
+          delay: 500,
+          direction: 'alternate',
+          complete: () => setanimatingStyle(false)
+        });
+
       }
     }
    
