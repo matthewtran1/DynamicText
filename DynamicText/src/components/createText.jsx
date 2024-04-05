@@ -7,15 +7,16 @@ import {useState, useEffect, useRef} from "react";
 import anime from 'animejs/lib/anime.es.js';
 import GIF from 'gif.js'
 
-const CreateText = ({ selectedValues }) => {
 
-    const [animatingStyle, setanimatingStyle] = useState(false);
-    const gif = useRef(null);
-  
+const CreateText = ({ selectedValues}) => {
+
+    const [animatingStyle, setanimatingStyle] = useState(false)
+
     const animateText = () => {
       
       {/* Get the value in the input text box */}
       const inputTextElement = document.getElementById("inputText").value;
+    
       console.log(inputTextElement);
       let classes = "";
 
@@ -33,15 +34,6 @@ const CreateText = ({ selectedValues }) => {
 
       //Reset animation element
       anime.remove('#animateText');
-      
-      const frames = [];
-      const delay = 100; // Delay between frames (in milliseconds)
-  
-      // Define the animation function
-      const animateFrame = () => {
-        frames.push(document.getElementById("animateText").cloneNode(true));
-      };
-    
 
       // Fade in Animation
       if (selectedValues.animationStyle === "fadein") {
@@ -182,53 +174,20 @@ const CreateText = ({ selectedValues }) => {
 
       }
 
+    }
 
-      gif.current = new GIF({
-        workers: 2,
-        quality: 10,
-        width: 400,
-        height: 200,
-      });
-      
-      frames.forEach((frame) => {
-        gif.current.addFrame(frame, { delay });
-      });
-      
-      //Open gif in new tab
-      gif.current.on('finished', function(blob) {
-        const url = URL.createObjectURL(blob);
-        window.open(url);
-      });
-  
-      gif.current.render();
-    };
-    
-    //Export gif
-    const exportAsGif = () => {
-      if (gif.current !== null) {
-        gif.current.render();
-      }
-    };
 
     return (
       
       <>
 
         <button 
-        
         onClick = {animateText} 
-      
         className="text-white bg-indigo-500 hover:bg-indigo-600 font-medium rounded-lg text-md px-3 py-1.5">
 
           Animate
 
-        </button>
-     
-        <button
-        onClick={exportAsGif}
-        className="text-white bg-indigo-500 hover:bg-indigo-600 font-medium rounded-lg text-md px-3 py-1.5 ml-2">
-        Export as GIF
-      </button>
+        </button>      
         
        
       </>

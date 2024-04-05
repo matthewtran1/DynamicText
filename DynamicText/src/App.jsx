@@ -15,6 +15,8 @@ const App = () => {
 
     };
 
+
+
     /* Handles input changes to the customization panel  */
     const [values, setValues] = useState(initialValues);
 
@@ -43,7 +45,8 @@ const App = () => {
 
         {/* Render text box and pass selection values to each component*/}
 
-        <DrawTextBox text={values.text} 
+        <DrawTextBox 
+        
         animationStyle={values.animationStyle}  />
         
         {/* Render input text box and Animate Text button 
@@ -55,7 +58,8 @@ const App = () => {
           </div>
 
           <div className='flex justify-end'>
-            <CreateText selectedValues={values}/>
+            <CreateText selectedValues={values}
+           />
           </div>
           
         </div>
