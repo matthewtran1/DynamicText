@@ -15,8 +15,6 @@ const App = () => {
 
     };
 
-
-
     /* Handles input changes to the customization panel  */
     const [values, setValues] = useState(initialValues);
 
@@ -34,7 +32,7 @@ const App = () => {
       
       <div className="overflow-hidden">
 
-        <h1 className="text-3xl font-bold text-indigo-500 my-2">
+        <h1 className="text-3xl font-bold text-slate-500 my-2">
           Dynamic Text Animation Generator
         </h1>
 
@@ -74,7 +72,7 @@ const App = () => {
               <select value={values.fontsize} 
                 onChange={handleChange} 
                 name="fontsize"
-                className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
+                className="text-center border-2 border-slate-500 font-medium rounded-lg py-1">
 
                   <option defaultValue={""}>Font-Size</option>
                   <option value={"text-xs"}>12px</option>
@@ -99,7 +97,7 @@ const App = () => {
               <select value={values.fontStyle} 
                 onChange={handleChange} 
                 name="fontStyle"
-                className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
+                className="text-center border-2 border-slate-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Font-Style</option>
                   <option value={"normal"}>Normal</option>
                   <option value={"italic"}>Italic</option>
@@ -114,7 +112,7 @@ const App = () => {
               <select value={values.color} 
               onChange={handleChange} 
               name="color"
-              className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
+              className="text-center border-2 border-slate-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Color</option>
                   <option value={"text-red-500"}>Red</option>
                   <option value={"text-gray-500"}>Gray</option>
@@ -136,7 +134,7 @@ const App = () => {
               <select value={values.animationStyle} 
               onChange={handleChange} 
               name="animationStyle"
-              className="text-center border-2 border-indigo-500 font-medium rounded-lg py-1">
+              className="text-center border-2 border-slate-500 font-medium rounded-lg py-1">
                   <option defaultValue={""}>Animation Style</option>
                   <option value={"fadein"}>Fade In</option>
                   <option value={"fadeup"}>Fade Up</option>
