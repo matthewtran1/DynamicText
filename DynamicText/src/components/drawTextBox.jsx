@@ -8,6 +8,7 @@ const DrawTextBox = () => {
 
     // <p id="animateText" className=""></p>
 
+       
     
     return (
       <canvas
