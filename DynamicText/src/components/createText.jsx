@@ -26,12 +26,13 @@ const CreateText = ({ selectedValues}) => {
       if (selectedValues.color) classes += ` ${selectedValues.color}`;
 
        {/* Print input text into the drawBox */}
+       {/* 
       document.getElementById("animateText").innerText = inputTextElement;
       document.getElementById("animateText").className = classes.trim();
 
       // Reset rotation to 0 degrees to be able animate text again 
       document.getElementById("animateText").style.transform = "rotate(0deg)";
-
+*/}
       //Reset animation element
       anime.remove('#animateText');
 
@@ -170,7 +171,7 @@ const CreateText = ({ selectedValues}) => {
         });
 
       }
-
+      console.log(selectedValues.fontsize, selectedValues.fontStyle, selectedValues.color, selectedValues.animationStyle)
     }
 
 
