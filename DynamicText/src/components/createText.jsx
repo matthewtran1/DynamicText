@@ -14,19 +14,22 @@ const CreateText = ({ selectedValues}) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const animateText = () => {
-    
-    {/* Get the value in the input text box */}
+
+    if (isAnimating) return; // Prevent multiple clicks while animation is in progress
+    setIsAnimating(true); // Set animation to true
+
+    // Get the value in the input text box 
     const inputTextElement = document.getElementById("inputText").value;
   
     console.log(inputTextElement);
     let classes = "";
 
-    {/* Add the selected value to the variable that holds the classes */}
+    // Add the selected value to the variable that holds the classes 
     if (selectedValues.fontsize) classes += ` ${selectedValues.fontsize}`;
     if (selectedValues.fontStyle) classes += ` ${selectedValues.fontStyle}`;
     if (selectedValues.color) classes += ` ${selectedValues.color}`;
 
-      {/* Print input text into the drawBox */}
+    // Print input text into the drawBox 
       
     document.getElementById("animateText").innerText = inputTextElement;
     document.getElementById("animateText").className = classes.trim();
@@ -35,145 +38,67 @@ const CreateText = ({ selectedValues}) => {
     document.getElementById("animateText").style.transform = "rotate(0deg)";
 
     //Reset animation element
+
     anime.remove('#animateText');
 
-    // Fade in Animation
-    if (selectedValues.animationStyle === "fadein") {
+    // Set animation to false once animation is completed
+    const onAnimationComplete = () => {
+      setIsAnimating(false); 
+    };
 
-      anime({
-          targets: '#animateText',                    //Specifiy the element to be animated
-          opacity: [0, 1],                            //Opacity: defines the start and end of fade
-          duration: 2000,                             //Duration of animation in milliseconds
-          easing: 'easeInOutQuad',                    //Starts slowly, speeds up in the middle and then slows down again
-          
-          
-      });
+    let animationConst = {
+      targets: '#animateText',
+      opacity: [0, 1],
+      duration: 2000,
+      easing: 'easeInOutQuad',
+      complete: onAnimationComplete
+    };
+
+    switch (selectedValues.animationStyle) {
+        case "fadein":
+            break;
+        case "fadeup":
+            animationConst.translateY = ['100%', '0%'];
+            break;
+        case "fadedown":
+            animationConst.translateY = ['-100%', '0%'];
+            break;
+        case "fadeleft":
+            animationConst.translateX = ['100%', '0%'];
+            break;
+        case "faderight":
+            animationConst.translateX = ['-100%', '0%'];
+            break;
+        case "rotateCW":
+            animationConst.rotate = '360deg';
+            animationConst.easing = 'linear';
+            break;
+        case "rotateCCW":
+            animationConst.rotate = '-360deg';
+            animationConst.easing = 'linear';
+            break;
+        case "flip":
+            animationConst.rotateY = [0, 360];
+            break;
+        case "returnR":
+            animationConst.translateX = [0, 100];
+            animationConst.delay = 500;
+            animationConst.direction = 'alternate';
+            break;
+        case "returnL":
+            animationConst.translateX = [0, -100];
+            animationConst.delay = 500;
+            animationConst.direction = 'alternate';
+            break;
+        default:
+            break;
     }
 
-    // Fade up animation
-    else if (selectedValues.animationStyle === "fadeup") {
+    anime(animationConst);
+  };
 
-      anime({
-          targets: '#animateText',
-          opacity: [0, 1],
-          translateY: ['100%', '0%'],                 //direction of animation
-          easing: 'easeInOutQuad',
-          duration: 1500, 
-          
-  
-      });
-    }
-    
-    // Fade down animation
-    else if (selectedValues.animationStyle === "fadedown") {
-  
-      anime({
-          targets: '#animateText',
-          opacity: [0, 1],
-          translateY: ['-100%', '0%'],            
-          easing: 'easeInOutQuad',
-          duration: 1500, 
-        
-      
-      });
-    }
-    
-    // Fade left animation
-    else if (selectedValues.animationStyle === "fadeleft") {
-  
-      anime({
-          targets: '#animateText',
-          opacity: [0, 1],
-          translateX: ['100%', '0%'],
-          easing: 'easeInOutQuad',
-          duration: 1500, 
-          
-          
-      });
-    }
-
-    // Fade right animation
-    else if (selectedValues.animationStyle === "faderight") {
-  
-      anime({
-          targets: '#animateText',
-          opacity: [0, 1],
-          translateX: ['-100%', '0%'],
-          easing: 'easeInOutQuad',
-          duration: 1500, 
-          
-      
-      });
-    }
-    // Rotate cw animation
-    else if (selectedValues.animationStyle === "rotateCW") {
-  
-      anime({
-          targets: '#animateText',
-          rotate: '360deg',
-          easing: 'linear',
-          duration: 2000, 
-      
-          
-      });
-    }
-
-    // Rotate ccw animation
-    else if (selectedValues.animationStyle === "rotateCCW") {
-    
-      anime({
-          targets: '#animateText',
-          rotate: '-360deg',
-          easing: 'linear',
-          duration: 2000, 
-          
-          
-      });
-    }
-
-    //flip animation
-    else if (selectedValues.animationStyle === "flip") {
-
-      anime({
-        targets: '#animateText',
-        rotateY: [0, 360], 
-        easing: 'easeInOutQuad',
-        duration: 2000,
-        
-
-      });
-    }
-
-    //return right animation
-    else if (selectedValues.animationStyle === "returnR")
-    {
-      
-      anime({
-        targets: '#animateText',
-        translateX: [0, 100], 
-        delay: 500,
-        direction: 'alternate',
-      
-  
-      });
-
-    }
-
-    //return left animation
-    else if (selectedValues.animationStyle === "returnL")
-    {
-  
-      anime({
-        targets: '#animateText',
-        translateX: [0, -100], 
-        delay: 500,
-        direction: 'alternate',
-        
-      });
-
-    }
     console.log(selectedValues.fontsize, selectedValues.fontStyle, selectedValues.color, selectedValues.animationStyle)
-  }
+  
 
 
     return (
