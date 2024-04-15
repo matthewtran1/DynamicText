@@ -46,28 +46,34 @@ const CreateText = ({ selectedValues}) => {
       setIsAnimating(false); 
     };
 
+    //Animation constants
     let animationConst = {
       targets: '#animateText',
-      opacity: [0, 1],
       duration: 2000,
       easing: 'easeInOutQuad',
       complete: onAnimationComplete
     };
 
+    //Animation styles
     switch (selectedValues.animationStyle) {
         case "fadein":
+            animationConst.opacity = [0,1]
             break;
         case "fadeup":
             animationConst.translateY = ['100%', '0%'];
+            animationConst.opacity = [0,1]
             break;
         case "fadedown":
+            animationConst.opacity = [0,1]
             animationConst.translateY = ['-100%', '0%'];
             break;
         case "fadeleft":
-            animationConst.translateX = ['100%', '0%'];
-            break;
+          animationConst.opacity = [0,1]
+          animationConst.translateX = ['100%', '0%'];
+          break;
         case "faderight":
-            animationConst.translateX = ['-100%', '0%'];
+          animationConst.opacity = [0,1]
+          animationConst.translateX = ['-100%', '0%'];
             break;
         case "rotateCW":
             animationConst.rotate = '360deg';
@@ -82,22 +88,25 @@ const CreateText = ({ selectedValues}) => {
             break;
         case "returnR":
             animationConst.translateX = [0, 100];
-            animationConst.delay = 500;
+            animationConst.duration = 1200;
             animationConst.direction = 'alternate';
             break;
         case "returnL":
             animationConst.translateX = [0, -100];
-            animationConst.delay = 500;
+            animationConst.duration = 1200;
             animationConst.direction = 'alternate';
             break;
         default:
             break;
     }
 
+    //Pass the constants to the anime function to set base properties
     anime(animationConst);
+    console.log(selectedValues.fontsize, selectedValues.fontStyle, selectedValues.color, selectedValues.animationStyle)
+
   };
 
-    console.log(selectedValues.fontsize, selectedValues.fontStyle, selectedValues.color, selectedValues.animationStyle)
+    
   
 
 
@@ -107,6 +116,7 @@ const CreateText = ({ selectedValues}) => {
 
         <button 
         onClick = {animateText} 
+        disabled={isAnimating}
         className="text-white bg-slate-500 hover:bg-slate-600 font-medium rounded-lg text-md px-3 py-1.5">
 
           Animate
