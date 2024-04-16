@@ -3,12 +3,12 @@
 //Applies the options selected
 
 import PropTypes from 'prop-types';
-import {useState, useEffect, useRef} from "react";
+import {useState} from "react";
 import anime from 'animejs/lib/anime.es.js';
 
 
 
-const CreateText = ({ selectedValues}) => {
+const CreateText = ({ selectedValues, setAnimationFrames}) => {
 
 
   const [isAnimating, setIsAnimating] = useState(false);
@@ -20,7 +20,8 @@ const CreateText = ({ selectedValues}) => {
 
     // Get the value in the input text box 
     const inputTextElement = document.getElementById("inputText").value;
-  
+    
+    //Check if the input text is correct
     console.log(inputTextElement);
     let classes = "";
 
@@ -41,9 +42,18 @@ const CreateText = ({ selectedValues}) => {
 
     anime.remove('#animateText');
 
+    // Capture animation frames
+    const frames = [];
+    const captureFrame = () => {
+      const frameContent = document.getElementById("animateText").innerHTML;
+      frames.push(document.getElementById("animateText").innerHTML);
+      console.log("Frame captured:", frameContent);
+    };
+
     // Set animation to false once animation is completed
-    const onAnimationComplete = () => {
+    const animationComplete = () => {
       setIsAnimating(false); 
+      setAnimationFrames(frames)
     };
 
     //Animation constants
@@ -51,7 +61,8 @@ const CreateText = ({ selectedValues}) => {
       targets: '#animateText',
       duration: 2000,
       easing: 'easeInOutQuad',
-      complete: onAnimationComplete
+      complete: animationComplete,
+      update: captureFrame
     };
 
     //Animation styles
@@ -129,6 +140,7 @@ const CreateText = ({ selectedValues}) => {
   }
 
   CreateText.propTypes = {
+    setAnimationFrames: PropTypes.func.isRequired,
     selectedValues: PropTypes.shape({
       fontsize: PropTypes.string,
       fontStyle: PropTypes.string,

@@ -12,7 +12,7 @@ const DrawTextBox = () => {
     
     return (
       <div
-      id = "canvasId"
+      id = "textBoxID"
       className="flex items-center justify-center w-full h-96 rounded-lg border-2 border-slate-500 overflow-hidden">
        
   

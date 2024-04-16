@@ -5,28 +5,28 @@ import { useState } from "react";
 
 const App = () => {
 
-    /* Set initial values of customization panels */
-    const initialValues = {
-
-      fontsize: "",
-      fontStyle: "",
-      color: "",
-      animationStyle: ""
-
-    };
-
-    /* Handles input changes to the customization panel  */
-    const [values, setValues] = useState(initialValues);
-
-    function handleChange(e) {
-      const {name, value} = e.target;
-        setValues({...values,
-        [name]: value});
-    }
-    
-    
+  //Handle animation frames state
+  const [animationFrames, setAnimationFrames] = useState([]);
   
+  /* Set initial values of customization panels */
+  const initialValues = {
 
+    fontsize: "",
+    fontStyle: "",
+    color: "",
+    animationStyle: ""
+
+  };
+
+  /* Handles input changes to the customization panel  */
+  const [values, setValues] = useState(initialValues);
+
+  function handleChange(e) {
+    const {name, value} = e.target;
+      setValues({...values,
+      [name]: value});
+  }
+    
   return (
     <>
       
@@ -57,6 +57,7 @@ const App = () => {
 
           <div className='flex justify-end'>
             <CreateText selectedValues={values}
+            setAnimationFrames={setAnimationFrames}
            />
           </div>
           
@@ -154,7 +155,7 @@ const App = () => {
 
           {/* Create Export button*/}
           <div className='flex justify-end'>
-            <ExportText/>
+            <ExportText animationFrames={animationFrames}/>
           </div>
         
         
