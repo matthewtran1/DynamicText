@@ -1,8 +1,6 @@
 
 //Renders the Text Box where the input text is displayed in
 
-import {useRef, useEffect} from 'react';
-
 
 const DrawTextBox = () => {
 

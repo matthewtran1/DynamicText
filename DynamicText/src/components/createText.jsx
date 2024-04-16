@@ -47,6 +47,7 @@ const CreateText = ({ selectedValues, setAnimationFrames}) => {
     const captureFrame = () => {
       const frameContent = document.getElementById("animateText").innerHTML;
       frames.push(document.getElementById("animateText").innerHTML);
+      
       console.log("Frame captured:", frameContent);
     };
 
@@ -113,13 +114,9 @@ const CreateText = ({ selectedValues, setAnimationFrames}) => {
 
     //Pass the constants to the anime function to set base properties
     anime(animationConst);
-    console.log(selectedValues.fontsize, selectedValues.fontStyle, selectedValues.color, selectedValues.animationStyle)
+    //console.log(selectedValues.fontsize, selectedValues.fontStyle, selectedValues.color, selectedValues.animationStyle)
 
   };
-
-    
-  
-
 
     return (
       

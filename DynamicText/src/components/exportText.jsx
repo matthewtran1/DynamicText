@@ -5,11 +5,12 @@ import GIF from 'gif.js';
 import {useState} from 'react'
 
 const ExportText = ({ animationFrames }) => {
-
+  let framesAdded = 0;
   //Set state for exporting
   const [isExporting, setIsExporting] = useState(false);
 
   console.log("Frames received in ExportText:", animationFrames);
+
   const exportGif = () => {
     const gif = new GIF({
       workers: 2,
@@ -22,30 +23,46 @@ const ExportText = ({ animationFrames }) => {
     const frameWidth = document.getElementById("textBoxID").offsetWidth;
     const frameHeight = document.getElementById("textBoxID").offsetHeight;
 
+    //Create new image for each frame and add it to the gif animation
     animationFrames.forEach(frame => {
       const img = new Image();
       img.src = frame;
-
       //Create canvas element and set its dimensions
       const canvas = document.createElement('canvas');
       canvas.width = frameWidth;
       canvas.height = frameHeight;
+    
 
       const ctx = canvas.getContext('2d');
-
+      
       //Draw image onto canvas
+ 
       img.onload = () => {
         ctx.drawImage(img, 0, 0, frameWidth, frameHeight);
         gif.addFrame(canvas, { delay: 16 });
+     
+        framesAdded++;
+
+      };
+
+      //image error handling
+      img.onerror = () => {
+        console.error('Error loading image:', frame);
       };
     });
+    
+    if (framesAdded === animationFrames.length) {
+      // All frames have been added, render the GIF
 
-    //Render the GIF
-    console.log("render gif", frameHeight, frameWidth)
-    gif.render();
+      gif.render();
+    }
 
-    //Download the GIF
+    console.log("Before")
     gif.on('finished', function(blob) {
+
+    
+      console.log("inside")
+      //Download the GIF
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -55,6 +72,8 @@ const ExportText = ({ animationFrames }) => {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     });
+
+    console.log("after")
 
     //Handling error
     gif.on('error', function(err) {
