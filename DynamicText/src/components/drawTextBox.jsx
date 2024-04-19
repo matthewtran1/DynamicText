@@ -1,13 +1,8 @@
 
 //Renders the Text Box where the input text is displayed in
 
-
 const DrawTextBox = () => {
 
-    // <p id="animateText" className=""></p>
-
-       
-    
     return (
       <div
       id = "textBoxID"

@@ -5,17 +5,21 @@ import GIF from 'gif.js';
 import {useState} from 'react'
 
 const ExportText = ({ animationFrames }) => {
-  let framesAdded = 0;
+  
   //Set state for exporting
   const [isExporting, setIsExporting] = useState(false);
 
   console.log("Frames received in ExportText:", animationFrames);
 
   const exportGif = () => {
+    console.log('Exporting GIF...');
+    //Start exporting process
+    setIsExporting(true);
+
     const gif = new GIF({
       workers: 2,
       quality: 10,
-      repeat: 0
+      repeat: 0   //loop indefinitely 
     });
 
    
@@ -23,45 +27,39 @@ const ExportText = ({ animationFrames }) => {
     const frameWidth = document.getElementById("textBoxID").offsetWidth;
     const frameHeight = document.getElementById("textBoxID").offsetHeight;
 
+    //Create canvas element and set its dimensions
+    const canvas = document.createElement('canvas');
+    canvas.width = frameWidth;
+    canvas.height = frameHeight;
+    const ctx = canvas.getContext('2d');
+
     //Create new image for each frame and add it to the gif animation
     animationFrames.forEach(frame => {
       const img = new Image();
+      console.log("Image URL:", frame);
       img.src = frame;
-      //Create canvas element and set its dimensions
-      const canvas = document.createElement('canvas');
-      canvas.width = frameWidth;
-      canvas.height = frameHeight;
-    
-
-      const ctx = canvas.getContext('2d');
-      
+  
       //Draw image onto canvas
  
       img.onload = () => {
+        ctx.clearRect(0, 0, frameWidth, frameHeight);
         ctx.drawImage(img, 0, 0, frameWidth, frameHeight);
         gif.addFrame(canvas, { delay: 16 });
      
-        framesAdded++;
+     
 
       };
 
       //image error handling
       img.onerror = () => {
-        console.error('Error loading image:', frame);
+        console.error('Error loading image:', frame, img.src);
       };
+
     });
     
-    if (framesAdded === animationFrames.length) {
-      // All frames have been added, render the GIF
 
-      gif.render();
-    }
-
-    console.log("Before")
     gif.on('finished', function(blob) {
-
-    
-      console.log("inside")
+      console.log('GIF export finished.');
       //Download the GIF
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -71,9 +69,9 @@ const ExportText = ({ animationFrames }) => {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-    });
+      setIsExporting(false);
 
-    console.log("after")
+    });
 
     //Handling error
     gif.on('error', function(err) {
@@ -81,11 +79,13 @@ const ExportText = ({ animationFrames }) => {
       setIsExporting(false);
       
     });
+
+    gif.render();
   }
 
   return (
     <div>
-
+      
       <button 
       onClick={exportGif}
       disabled={isExporting}
