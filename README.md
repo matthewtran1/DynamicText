@@ -1,3 +1,3 @@
 # Dynamic Text Animation Generator
 
-This project generates animated text from user inputs.
+This text animation generator generates animated text from user inputs.
